@@ -1,93 +1,367 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pranav Stationary</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #f4f6f9;
-      color: #333;
-    }
-    header {
-      background: linear-gradient(135deg, #4facfe, #00f2fe);
-      color: white;
-      padding: 20px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    header img {
-      max-width: 120px;
-      margin-bottom: 10px;
-    }
-    header h1 {
-      margin: 10px 0 0;
-      font-size: 2rem;
-      letter-spacing: 2px;
-    }
-    header p {
-      margin: 5px 0 0;
-      font-size: 1.1rem;
-    }
-    section {
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .about {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-    }
-    .about h2 {
-      margin-bottom: 15px;
-      font-size: 1.8rem;
-      color: #0077b6;
-    }
-    footer {
-      background: #222;
-      color: #ccc;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-    footer p {
-      margin: 5px 0;
-    }
-    .highlight {
-      color: #00f2fe;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stationery Shop - [Your Shop Name]</title>
+    <style>
+        /* --- GLOBAL STYLES --- */
+        :root {
+            --primary-color: #ffffff; /* White text */
+            --secondary-color: #a0a0a0; /* Grey text */
+            --bg-color-dark: #121212; /* Dark background */
+            --bg-color-light: #1e1e1e; /* Slightly lighter dark for sections */
+            --accent-color: #007bff; /* Blue for highlights (you can change this) */
+            --font-family: 'Arial', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg-color-dark);
+            color: var(--primary-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- HEADER / NAVIGATION --- */
+        header {
+            background: var(--bg-color-dark);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--bg-color-light);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('[YOUR-SHOP-PHOTO-URL]') no-repeat center center/cover; /* Replace with actual photo */
+            position: relative;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-content p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* --- SECTION STYLING --- */
+        section {
+            padding: 80px 0;
+            background-color: var(--bg-color-light);
+            border-bottom: 1px solid #333;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- ABOUT US --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .member h3 {
+            margin-top: 10px;
+            color: var(--primary-color);
+        }
+
+        .member p {
+            color: var(--secondary-color);
+            font-style: italic;
+        }
+
+        /* --- PRODUCTS GALLERY --- */
+        #products {
+            background-color: var(--bg-color-dark);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--bg-color-light);
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            transition: transform 0.3s;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            background: var(--bg-color-dark); /* Placeholder for image */
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
+        }
+
+        .product-card h3 {
+            margin-bottom: 10px;
+        }
+
+        /* --- CONTACT US --- */
+        #contact {
+            text-align: center;
+        }
+        
+        .contact-info p {
+            margin: 15px 0;
+            font-size: 1.1em;
+            color: var(--secondary-color);
+        }
+
+        .contact-info strong {
+            color: var(--primary-color);
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--bg-color-dark);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #333;
+            font-size: 0.9em;
+        }
+
+        /* --- MOBILE STYLES (Simple Responsiveness) --- */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 1.5em;
+            }
+            nav ul {
+                display: none; /* Simple mobile nav hide for brevity */
+            }
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+    </style>
 </head>
 <body>
-  <header>
-    <img src="logo.jpg" alt="Pranav Stationary Logo">
-    <h1>Pranav Stationary</h1>
-    <p>All your stationery needs in one place</p>
-  </header>
 
-  <section>
-    <div class="about">
-      <h2>Welcome to Pranav Stationary</h2>
-      <p>
-        We provide high-quality stationery products for students, professionals, and creative minds.
-        Our aim is to make your work and study easier with the best tools.
-      </p>
-      <p><span class="highlight">Address:</span> I.G. Colony, Bhagwanpur, Muzaffarpur, Bihar - 842001</p>
-      <p><span class="highlight">Owner:</span> Nitish Kumar Singh</p>
-    </div>
-  </section>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#hero" class="logo">[YOUR SHOP NAME]</a>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <footer>
-    <p>&copy; 2025 Pranav Stationary. All Rights Reserved.</p>
-    <p>Designed with ❤️ by Modern Web</p>
-  </footer>
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Ignite Your Creativity</h1>
+            <p>The best supplies for artists, students, and professionals.</p>
+            <a href="#products" class="btn">Explore Our Stationery</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>Our Visionaries</h2>
+            <div class="team-grid">
+                <div class="member">
+                    <img src="[NITISH-PHOTO-URL]" alt="Nitish Kumar Singh" style="width: 150px; height: 150px; border-radius: 50%; background: #333; object-fit: cover;">
+                    <h3>Nitish Kumar Singh</h3>
+                    <p>Founder</p>
+                </div>
+                <div class="member">
+                    <img src="[NILAM-PHOTO-URL]" alt="Nilam Kumari" style="width: 150px; height: 150px; border-radius: 50%; background: #333; object-fit: cover;">
+                    <h3>Nilam Kumari</h3>
+                    <p>Co-founder</p>
+                </div>
+                <div class="member">
+                    <img src="[PRANAV-PHOTO-URL]" alt="Pranav Kumar Singh" style="width: 150px; height: 150px; border-radius: 50%; background: #333; object-fit: cover;">
+                    <h3>Pranav Kumar Singh</h3>
+                    <p>Co-founder</p>
+                </div>
+                <div class="member">
+                    <img src="[NIKHIL-PHOTO-URL]" alt="Nikhil Kumar" style="width: 150px; height: 150px; border-radius: 50%; background: #333; object-fit: cover;">
+                    <h3>Nikhil Kumar</h3>
+                    <p>Business Consultant</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="products">
+        <div class="container">
+            <h2>Featured Products</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">PRODUCT IMAGE 1 (Pencils)</div>
+                    <h3>Premium Pencil Set</h3>
+                    <p>Smooth writing, perfect for sketching.</p>
+                    <a href="[LINK-TO-BUY-PAGE]" class="btn">Buy Now</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img">PRODUCT IMAGE 2 (Notebook)</div>
+                    <h3>Leather-Bound Journal</h3>
+                    <p>A sophisticated place for your thoughts.</p>
+                    <a href="[LINK-TO-BUY-PAGE]" class="btn">Buy Now</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">PRODUCT IMAGE 3 (Art Supplies)</div>
+                    <h3>Watercolor Paint Set</h3>
+                    <p>Vibrant colors for your next masterpiece.</p>
+                    <a href="[LINK-TO-BUY-PAGE]" class="btn">Buy Now</a>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">PRODUCT IMAGE 4 (Pens)</div>
+                    <h3>Executive Pen Collection</h3>
+                    <p>Effortless flow and elegant design.</p>
+                    <a href="[LINK-TO-BUY-PAGE]" class="btn">Buy Now</a>
+                </div>
+                </div>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="[LINK-TO-ALL-PRODUCTS]" class="btn">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p>Call Us: <strong>8210963709</strong></p>
+                <p>Email: <strong>singhnitish5233@gmail.com</strong></p>
+                <p>Address: <strong>IG Colony, Bhagwanpur, Muzaffarpur</strong></p>
+                
+                <a href="https://wa.me/918210963709" class="btn" style="background-color: #25d366; margin-top: 20px;">
+                    <span style="margin-right: 10px;">&#x1F4AC;</span> Direct WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 [Your Shop Name]. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
-```
